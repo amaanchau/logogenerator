@@ -334,6 +334,13 @@
                         Use outline version (no fill)
                     </label>
                 </div>
+                
+                <div class="slider-group">
+                    <label>
+                        <input type="checkbox" id="useAlternativeSVG" style="margin-right: 8px;">
+                        Use alternative SVG design
+                    </label>
+                </div>
             </div>
             
             <div class="control-group">
@@ -470,6 +477,12 @@
                         <path fill="#C592E2" d="M995.7 1635.1 C879.9 1489.2 804.8 1351.9 779 1236.1 c-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.8-100.8 251.1-216.7 399z" />
                         <path fill="#AE6FD3" d="m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3zm-856-100.9c-115.8-145.9-190.9-283.2-216.7-399-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.7-100.8 251-216.7 399zm967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z" />
                     </g>
+                    <!-- Alternative SVG paths (hidden by default) -->
+                    <g id="altSvgGroup" style="display: none;" transform="translate(996.65, 1071.6) scale(0.0586, 0.0586)">
+                        <path fill="#AE6FD3" d="M440.988098,730.009399 C426.640747,716.209900 419.369415,698.619019 411.853424,681.147522 C395.997467,644.288757 380.051941,607.468628 364.167023,570.622314 C362.936676,567.768494 361.893036,564.834167 360.575104,561.456787 C363.431458,561.209473 364.919678,562.686462 366.490662,563.654724 C390.847260,578.666077 417.353058,584.883911 445.771210,582.591492 C469.345398,580.689697 490.087189,571.162415 509.118896,557.613342 C533.871582,539.991394 553.222351,517.164551 570.924561,492.808167 C582.581848,476.768921 593.969727,460.518066 608.484070,446.824768 C620.152161,435.816681 633.085510,427.054718 649.034119,423.285950 C659.291992,420.862000 669.262573,421.658081 679.000549,425.118744 C698.034058,431.882904 708.428955,451.444214 704.921936,472.170868 C702.490662,486.539581 695.940613,499.288879 690.344849,512.427368 C664.181763,573.856995 638.055481,635.302734 611.670532,696.637085 C596.773438,731.266724 570.937195,753.189026 533.543030,759.561279 C498.086273,765.603394 466.945770,755.970398 440.988098,730.009399 z"/>
+                        <path fill="#AE6FD3" d="M466.224487,423.873596 C479.585266,455.514862 492.726440,486.835327 506.110443,518.051697 C507.950531,522.343506 507.687744,524.872925 503.924622,528.108765 C483.580750,545.602234 460.768829,557.215820 433.445709,557.123901 C402.312103,557.019104 376.921814,543.638000 356.012482,521.181519 C336.180267,499.881866 323.214783,474.502167 312.024475,447.905365 C294.333862,405.858856 275.947632,364.105286 257.897980,322.209564 C250.650833,305.387939 243.507721,288.521515 236.347549,271.662598 C235.907288,270.625977 235.733521,269.476105 235.390137,268.210846 C239.173981,265.905121 243.328964,266.663666 247.164413,266.322021 C281.357391,263.276245 315.372650,263.595551 348.625946,273.537079 C390.900299,286.175568 420.392151,312.810059 436.849304,353.990509 C446.177795,377.333069 456.310944,400.354034 466.224487,423.873596 z"/>
+                        <path fill="#AE6FD3" d="M698.607056,405.410400 C672.103638,391.259705 646.053528,393.194641 620.356628,406.344818 C599.319519,417.110382 583.096069,433.612213 568.597229,451.852356 C558.135071,465.014160 548.204041,478.597839 538.003174,491.968201 C537.040039,493.230530 536.494629,494.997986 534.649353,495.369232 C533.790588,494.552063 534.171082,493.771301 534.489197,493.020813 C555.735168,442.902283 576.359314,392.507446 598.454346,342.765961 C613.476685,308.947113 640.888489,287.848785 675.387878,275.804047 C705.578552,265.263611 736.820190,263.291565 768.473206,265.463989 C774.280029,265.862488 780.084778,266.290649 785.891602,266.689972 C788.545532,266.872498 791.171997,267.148682 794.544617,268.831909 C771.536499,322.764313 748.543274,376.661865 724.996216,431.857666 C717.941833,420.261841 709.766602,411.524414 698.607056,405.410400 z"/>
+                    </g>
                 </svg>
                 <span id="previewText" style="font-family: 'Quicksand', sans-serif; font-weight: 900; font-size: 36px; color: #AE6FD3;">Vendr</span>
             </div>
@@ -514,6 +527,11 @@
         // SVG path data for outline version (no fill)
         const svgOutlinePath = "m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3zm-856-100.9c-115.8-145.9-190.9-283.2-216.7-399-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.7-100.8 251-216.7 399zm967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z";
 
+        // Alternative SVG path data (your new design)
+        const altSvgPath1 = "M440.988098,730.009399 C426.640747,716.209900 419.369415,698.619019 411.853424,681.147522 C395.997467,644.288757 380.051941,607.468628 364.167023,570.622314 C362.936676,567.768494 361.893036,564.834167 360.575104,561.456787 C363.431458,561.209473 364.919678,562.686462 366.490662,563.654724 C390.847260,578.666077 417.353058,584.883911 445.771210,582.591492 C469.345398,580.689697 490.087189,571.162415 509.118896,557.613342 C533.871582,539.991394 553.222351,517.164551 570.924561,492.808167 C582.581848,476.768921 593.969727,460.518066 608.484070,446.824768 C620.152161,435.816681 633.085510,427.054718 649.034119,423.285950 C659.291992,420.862000 669.262573,421.658081 679.000549,425.118744 C698.034058,431.882904 708.428955,451.444214 704.921936,472.170868 C702.490662,486.539581 695.940613,499.288879 690.344849,512.427368 C664.181763,573.856995 638.055481,635.302734 611.670532,696.637085 C596.773438,731.266724 570.937195,753.189026 533.543030,759.561279 C498.086273,765.603394 466.945770,755.970398 440.988098,730.009399 z";
+        const altSvgPath2 = "M466.224487,423.873596 C479.585266,455.514862 492.726440,486.835327 506.110443,518.051697 C507.950531,522.343506 507.687744,524.872925 503.924622,528.108765 C483.580750,545.602234 460.768829,557.215820 433.445709,557.123901 C402.312103,557.019104 376.921814,543.638000 356.012482,521.181519 C336.180267,499.881866 323.214783,474.502167 312.024475,447.905365 C294.333862,405.858856 275.947632,364.105286 257.897980,322.209564 C250.650833,305.387939 243.507721,288.521515 236.347549,271.662598 C235.907288,270.625977 235.733521,269.476105 235.390137,268.210846 C239.173981,265.905121 243.328964,266.663666 247.164413,266.322021 C281.357391,263.276245 315.372650,263.595551 348.625946,273.537079 C390.900299,286.175568 420.392151,312.810059 436.849304,353.990509 C446.177795,377.333069 456.310944,400.354034 466.224487,423.873596 z";
+        const altSvgPath3 = "M698.607056,405.410400 C672.103638,391.259705 646.053528,393.194641 620.356628,406.344818 C599.319519,417.110382 583.096069,433.612213 568.597229,451.852356 C558.135071,465.014160 548.204041,478.597839 538.003174,491.968201 C537.040039,493.230530 536.494629,494.997986 534.649353,495.369232 C533.790588,494.552063 534.171082,493.771301 534.489197,493.020813 C555.735168,442.902283 576.359314,392.507446 598.454346,342.765961 C613.476685,308.947113 640.888489,287.848785 675.387878,275.804047 C705.578552,265.263611 736.820190,263.291565 768.473206,265.463989 C774.280029,265.862488 780.084778,266.290649 785.891602,266.689972 C788.545532,266.872498 791.171997,267.148682 794.544617,268.831909 C771.536499,322.764313 748.543274,376.661865 724.996216,431.857666 C717.941833,420.261841 709.766602,411.524414 698.607056,405.410400 z";
+
         // Current settings
         let currentColor = '#AE6FD3';
         let currentGradient = null;
@@ -525,6 +543,7 @@
         let currentTextVerticalOffset = 15;
         let sameInnerColor = false;
         let useOutlineVersion = false;
+        let useAlternativeSVG = false;
 
         function createGradient(ctx, canvas, gradientString) {
             if (!gradientString) return currentColor;
@@ -554,21 +573,51 @@
             let scale, offsetX, offsetY;
             const sizeMultiplier = currentLogoSize / 100;
             
-            if (isFavicon) {
-                // For favicon - logo only, centered, optimized size
-                scale = 0.8 * sizeMultiplier;
-                offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
-                offsetY = canvas.height / 2;
-            } else if (withText) {
-                // For logo with text - calculate dynamic width
-                scale = 0.08 * sizeMultiplier;
-                offsetX = 40;
-                offsetY = canvas.height / 2;
+            if (useAlternativeSVG) {
+                // Alternative SVG positioning
+                if (isFavicon) {
+                    // For favicon - logo only, centered, optimized size
+                    scale = 3.0 * sizeMultiplier;
+                    offsetX = canvas.width / 2;
+                    offsetY = canvas.height / 2;
+                } else if (withText) {
+                    // For logo with text - calculate dynamic width
+                    if (useAlternativeSVG) {
+                        // Alternative SVG: Bigger scale with proper spacing
+                        const desiredLeftSpace = 80; // More spacing from left edge
+                        const maxLogoWidth = canvas.width - desiredLeftSpace - 200; // Leave space for text
+                        scale = Math.min(0.25 * sizeMultiplier, maxLogoWidth / 400); // Bigger scale
+                        offsetX = desiredLeftSpace;
+                    } else {
+                        // Original SVG
+                        scale = 0.08 * sizeMultiplier;
+                        offsetX = 40;
+                    }
+                    offsetY = canvas.height / 2;
+                } else {
+                    // For logo only - scaled up 4x for high resolution
+                    scale = 2.5 * sizeMultiplier;
+                    offsetX = canvas.width / 2;
+                    offsetY = canvas.height / 2;
+                }
             } else {
-                // For logo only - scaled up 4x for high resolution
-                scale = 0.72 * sizeMultiplier;
-                offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
-                offsetY = canvas.height / 2;
+                // Original SVG positioning
+                if (isFavicon) {
+                    // For favicon - logo only, centered, optimized size
+                    scale = 0.8 * sizeMultiplier;
+                    offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
+                    offsetY = canvas.height / 2;
+                } else if (withText) {
+                    // For logo with text - calculate dynamic width
+                    scale = 0.08 * sizeMultiplier;
+                    offsetX = 40;
+                    offsetY = canvas.height / 2;
+                } else {
+                    // For logo only - scaled up 4x for high resolution
+                    scale = 0.72 * sizeMultiplier;
+                    offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
+                    offsetY = canvas.height / 2;
+                }
             }
             
             // For inverted version, fill background with color first
@@ -583,57 +632,80 @@
             
             ctx.save();
             ctx.translate(offsetX, offsetY);
-            ctx.scale(scale, -scale); // Flip Y-axis to match SVG coordinate system
-            ctx.translate(0, -2143.2 / 2); // Center the logo vertically
             
-            if (useOutlineVersion) {
-                // Draw outline version (single path with fill, no inner circle)
-                const outlinePath = new Path2D(svgOutlinePath);
-                if (isInverted) {
-                    ctx.fillStyle = '#FFFFFF'; // White for inverted
-                } else if (currentGradient) {
-                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
-                } else {
-                    ctx.fillStyle = currentColor;
-                }
-                ctx.fill(outlinePath);
-            } else {
-                // Draw filled version (original behavior)
-                const mainPath = new Path2D(svgMainPath);
-                if (isInverted) {
-                    ctx.fillStyle = '#FFFFFF'; // White for inverted
-                } else if (currentGradient) {
-                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
-                } else {
-                    ctx.fillStyle = currentColor;
-                }
-                ctx.fill(mainPath);
+            if (useAlternativeSVG) {
+                // Alternative SVG - different scaling and positioning
+                const altScale = scale * 0.8; // Scale down slightly for better fit
+                ctx.scale(altScale, altScale); // No Y-axis flip for alternative SVG
+                ctx.translate(-512, -512); // Center the 1024x1024 viewBox
                 
-                // Draw the inner circle
-                const innerPath = new Path2D(svgInnerPath);
-                if (isInverted) {
-                    ctx.fillStyle = '#FFFFFF'; // White for inverted
-                } else if (sameInnerColor) {
-                    // Use the same color/gradient as the main path
-                    if (currentGradient) {
+                // Draw all three paths of the alternative SVG
+                const paths = [altSvgPath1, altSvgPath2, altSvgPath3];
+                paths.forEach((pathData, index) => {
+                    const path = new Path2D(pathData);
+                    if (isInverted) {
+                        ctx.fillStyle = '#FFFFFF'; // White for inverted
+                    } else if (currentGradient) {
                         ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
                     } else {
                         ctx.fillStyle = currentColor;
                     }
+                    ctx.fill(path);
+                });
+            } else {
+                // Original SVG behavior
+                ctx.scale(scale, -scale); // Flip Y-axis to match SVG coordinate system
+                ctx.translate(0, -2143.2 / 2); // Center the logo vertically
+                
+                if (useOutlineVersion) {
+                    // Draw outline version (single path with fill, no inner circle)
+                    const outlinePath = new Path2D(svgOutlinePath);
+                    if (isInverted) {
+                        ctx.fillStyle = '#FFFFFF'; // White for inverted
+                    } else if (currentGradient) {
+                        ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                    } else {
+                        ctx.fillStyle = currentColor;
+                    }
+                    ctx.fill(outlinePath);
                 } else {
-                    // Use a lighter shade (original behavior)
-                    if (currentGradient) {
-                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
-                        if (colorMatches && colorMatches.length > 0) {
-                            ctx.fillStyle = lightenColor(colorMatches[0], 20);
+                    // Draw filled version (original behavior)
+                    const mainPath = new Path2D(svgMainPath);
+                    if (isInverted) {
+                        ctx.fillStyle = '#FFFFFF'; // White for inverted
+                    } else if (currentGradient) {
+                        ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                    } else {
+                        ctx.fillStyle = currentColor;
+                    }
+                    ctx.fill(mainPath);
+                    
+                    // Draw the inner circle
+                    const innerPath = new Path2D(svgInnerPath);
+                    if (isInverted) {
+                        ctx.fillStyle = '#FFFFFF'; // White for inverted
+                    } else if (sameInnerColor) {
+                        // Use the same color/gradient as the main path
+                        if (currentGradient) {
+                            ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
                         } else {
-                            ctx.fillStyle = '#C592E2';
+                            ctx.fillStyle = currentColor;
                         }
                     } else {
-                        ctx.fillStyle = lightenColor(currentColor, 20);
+                        // Use a lighter shade (original behavior)
+                        if (currentGradient) {
+                            const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                            if (colorMatches && colorMatches.length > 0) {
+                                ctx.fillStyle = lightenColor(colorMatches[0], 20);
+                            } else {
+                                ctx.fillStyle = '#C592E2';
+                            }
+                        } else {
+                            ctx.fillStyle = lightenColor(currentColor, 20);
+                        }
                     }
+                    ctx.fill(innerPath);
                 }
-                ctx.fill(innerPath);
             }
             
             ctx.restore();
@@ -651,7 +723,9 @@
                 ctx.textBaseline = 'middle';
                 
                 // Position text next to logo (scaled spacing)
-                const textX = offsetX + (1991.3 * scale) + (currentSpacing * 2);
+                const logoWidth = useAlternativeSVG ? (400 * scale) : (1991.3 * scale); // Further reduce effective width for alternative SVG
+                const spacingMultiplier = useAlternativeSVG ? 0.5 : 2; // Working spacing for alternative SVG
+                const textX = offsetX + logoWidth + (currentSpacing * spacingMultiplier);
                 const textY = canvas.height / 2 + currentTextVerticalOffset; // Adjustable text vertical position
                 ctx.fillText('Vendr', textX, textY);
             }
@@ -676,54 +750,77 @@
         function updatePreview() {
             const previewSvg = document.getElementById('previewSvg');
             const previewText = document.getElementById('previewText');
+            const altSvgGroup = document.getElementById('altSvgGroup');
             
-            // Update SVG color
-            const pathElements = previewSvg.querySelectorAll('path');
-            const mainPath = pathElements[0];
-            const innerPath = pathElements[1];
-            const outlinePath = pathElements[2];
-            
-            if (useOutlineVersion) {
-                // Hide filled paths and show outline
-                mainPath.style.display = 'none';
-                innerPath.style.display = 'none';
-                outlinePath.style.display = 'block';
+            // Show/hide SVG groups based on alternative SVG setting
+            const originalGroup = previewSvg.querySelector('g');
+            if (useAlternativeSVG) {
+                originalGroup.style.display = 'none';
+                altSvgGroup.style.display = 'block';
                 
-                // Update outline color (now using fill)
-                if (currentGradient) {
-                    const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
-                    const mainColor = colorMatches ? colorMatches[0] : currentColor;
-                    outlinePath.setAttribute('fill', mainColor);
-                } else {
-                    outlinePath.setAttribute('fill', currentColor);
-                }
-            } else {
-                // Show filled paths and hide outline
-                mainPath.style.display = 'block';
-                innerPath.style.display = 'block';
-                outlinePath.style.display = 'none';
-                
-                if (sameInnerColor) {
-                    // Use the same color for both paths
+                // Update alternative SVG colors
+                const altPaths = altSvgGroup.querySelectorAll('path');
+                altPaths.forEach(path => {
                     if (currentGradient) {
                         const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
                         const mainColor = colorMatches ? colorMatches[0] : currentColor;
-                        mainPath.setAttribute('fill', mainColor);
-                        innerPath.setAttribute('fill', mainColor);
+                        path.setAttribute('fill', mainColor);
                     } else {
-                        mainPath.setAttribute('fill', currentColor);
-                        innerPath.setAttribute('fill', currentColor);
+                        path.setAttribute('fill', currentColor);
+                    }
+                });
+            } else {
+                originalGroup.style.display = 'block';
+                altSvgGroup.style.display = 'none';
+                
+                // Update original SVG color
+                const pathElements = previewSvg.querySelectorAll('path');
+                const mainPath = pathElements[0];
+                const innerPath = pathElements[1];
+                const outlinePath = pathElements[2];
+                
+                if (useOutlineVersion) {
+                    // Hide filled paths and show outline
+                    mainPath.style.display = 'none';
+                    innerPath.style.display = 'none';
+                    outlinePath.style.display = 'block';
+                    
+                    // Update outline color (now using fill)
+                    if (currentGradient) {
+                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                        const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                        outlinePath.setAttribute('fill', mainColor);
+                    } else {
+                        outlinePath.setAttribute('fill', currentColor);
                     }
                 } else {
-                    // Use lighter shade for inner circle (original behavior)
-                    if (currentGradient) {
-                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
-                        const mainColor = colorMatches ? colorMatches[0] : currentColor;
-                        mainPath.setAttribute('fill', mainColor);
-                        innerPath.setAttribute('fill', lightenColor(mainColor, 20));
+                    // Show filled paths and hide outline
+                    mainPath.style.display = 'block';
+                    innerPath.style.display = 'block';
+                    outlinePath.style.display = 'none';
+                    
+                    if (sameInnerColor) {
+                        // Use the same color for both paths
+                        if (currentGradient) {
+                            const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                            const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                            mainPath.setAttribute('fill', mainColor);
+                            innerPath.setAttribute('fill', mainColor);
+                        } else {
+                            mainPath.setAttribute('fill', currentColor);
+                            innerPath.setAttribute('fill', currentColor);
+                        }
                     } else {
-                        mainPath.setAttribute('fill', currentColor);
-                        innerPath.setAttribute('fill', lightenColor(currentColor, 20));
+                        // Use lighter shade for inner circle (original behavior)
+                        if (currentGradient) {
+                            const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                            const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                            mainPath.setAttribute('fill', mainColor);
+                            innerPath.setAttribute('fill', lightenColor(mainColor, 20));
+                        } else {
+                            mainPath.setAttribute('fill', currentColor);
+                            innerPath.setAttribute('fill', lightenColor(currentColor, 20));
+                        }
                     }
                 }
             }
@@ -804,27 +901,42 @@
             const timestamp = new Date().toISOString().slice(0,10);
             
             // Create SVG content
-            let svgContent = `<svg width="2000" height="2000" viewBox="0 0 1991.3 2143.2" xmlns="http://www.w3.org/2000/svg">
-                <g transform="scale(1, -1) translate(0, -2143.2)">`;
+            let svgContent;
             
-            if (useOutlineVersion) {
-                // Use outline version
+            if (useAlternativeSVG) {
+                // Alternative SVG
+                svgContent = `<svg width="2000" height="2000" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">`;
                 const fillColor = currentGradient ? 
                     (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
                     currentColor;
-                svgContent += `<path fill="${fillColor}" d="${svgOutlinePath}" />`;
+                svgContent += `<path fill="${fillColor}" d="${altSvgPath1}" />`;
+                svgContent += `<path fill="${fillColor}" d="${altSvgPath2}" />`;
+                svgContent += `<path fill="${fillColor}" d="${altSvgPath3}" />`;
             } else {
-                // Use filled version
-                const mainColor = currentGradient ? 
-                    (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
-                    currentColor;
-                const innerColor = sameInnerColor ? mainColor : lightenColor(mainColor, 20);
+                // Original SVG
+                svgContent = `<svg width="2000" height="2000" viewBox="0 0 1991.3 2143.2" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="scale(1, -1) translate(0, -2143.2)">`;
                 
-                svgContent += `<path fill="${mainColor}" d="${svgMainPath}" />`;
-                svgContent += `<path fill="${innerColor}" d="${svgInnerPath}" />`;
+                if (useOutlineVersion) {
+                    // Use outline version
+                    const fillColor = currentGradient ? 
+                        (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
+                        currentColor;
+                    svgContent += `<path fill="${fillColor}" d="${svgOutlinePath}" />`;
+                } else {
+                    // Use filled version
+                    const mainColor = currentGradient ? 
+                        (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
+                        currentColor;
+                    const innerColor = sameInnerColor ? mainColor : lightenColor(mainColor, 20);
+                    
+                    svgContent += `<path fill="${mainColor}" d="${svgMainPath}" />`;
+                    svgContent += `<path fill="${innerColor}" d="${svgInnerPath}" />`;
+                }
+                svgContent += `</g>`;
             }
             
-            svgContent += `</g></svg>`;
+            svgContent += `</svg>`;
             
             // Create and download SVG file
             const blob = new Blob([svgContent], { type: 'image/svg+xml' });
@@ -929,6 +1041,12 @@
             // Use outline version checkbox
             document.getElementById('useOutlineVersion').addEventListener('change', function() {
                 useOutlineVersion = this.checked;
+                updatePreview();
+            });
+
+            // Use alternative SVG checkbox
+            document.getElementById('useAlternativeSVG').addEventListener('change', function() {
+                useAlternativeSVG = this.checked;
                 updatePreview();
             });
 
