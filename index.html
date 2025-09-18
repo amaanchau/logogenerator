@@ -317,6 +317,11 @@
                 </div>
                 
                 <div class="slider-group">
+                    <label for="textVerticalOffset">Text Vertical Position: <span id="textVerticalOffsetValue">15px</span></label>
+                    <input type="range" id="textVerticalOffset" class="slider" min="-30" max="50" value="15">
+                </div>
+                
+                <div class="slider-group">
                     <label>
                         <input type="checkbox" id="sameInnerColor" style="margin-right: 8px;">
                         Same color for inner circle
@@ -517,6 +522,7 @@
         let currentFontSize = 192;
         let currentLogoSize = 100;
         let currentSpacing = 15;
+        let currentTextVerticalOffset = 15;
         let sameInnerColor = false;
         let useOutlineVersion = false;
 
@@ -646,7 +652,7 @@
                 
                 // Position text next to logo (scaled spacing)
                 const textX = offsetX + (1991.3 * scale) + (currentSpacing * 2);
-                const textY = canvas.height / 2 + 15; // Move text lower
+                const textY = canvas.height / 2 + currentTextVerticalOffset; // Adjustable text vertical position
                 ctx.fillText('Vendr', textX, textY);
             }
         }
@@ -887,6 +893,14 @@
             spacingSlider.addEventListener('input', function() {
                 currentSpacing = parseInt(this.value);
                 spacingValue.textContent = currentSpacing + 'px';
+                updatePreview();
+            });
+
+            const textVerticalOffsetSlider = document.getElementById('textVerticalOffset');
+            const textVerticalOffsetValue = document.getElementById('textVerticalOffsetValue');
+            textVerticalOffsetSlider.addEventListener('input', function() {
+                currentTextVerticalOffset = parseInt(this.value);
+                textVerticalOffsetValue.textContent = currentTextVerticalOffset + 'px';
                 updatePreview();
             });
 
