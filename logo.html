@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customizable Logo Generator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700;800;900&family=Nunito:wght@200;300;400;500;600;700;800;900&family=Fredoka:wght@300;400;500;600;700&family=Varela+Round&family=Dosis:wght@200;300;400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&family=Comfortaa:wght@300;400;500;600;700&family=Ubuntu:wght@300;400;500;700&family=Cabin:wght@400;500;600;700&family=Open+Sans:wght@300;400;600;700;800&family=Source+Sans+3:wght@200;300;400;500;600;700;800;900&family=PT+Sans:wght@400;700&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Lato:wght@100;300;400;700;900&family=Questrial&family=Alexandria:wght@200;300;400;500;600;700;800;900&family=Bricolage+Grotesque:wght@200;300;400;500;600;700;800&family=Chewy&family=Luckiest+Guy&family=Righteous&family=Bangers&family=Creepster&family=Nosifer&family=Bungee&family=Modak&family=Rubik:wght@300;400;500;600;700;800;900&family=Pacifico&family=Kalam:wght@300;400;700&family=Patrick+Hand&family=Leckerli+One&family=Borel&family=Vibur&family=Sofia&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            color: #333;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+        .controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .control-group {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #e9ecef;
+        }
+        .control-group h3 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .color-option {
+            padding: 12px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .color-option:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .color-option.active {
+            border-color: #333;
+            transform: scale(1.05);
+        }
+        .gradient-option {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .font-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+        }
+        .font-option {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            font-weight: 700;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .font-option:hover {
+            border-color: #AE6FD3;
+            background: #f8f5ff;
+        }
+        .font-option.active {
+            border-color: #AE6FD3;
+            background: #AE6FD3;
+            color: white;
+        }
+        .slider-group {
+            margin: 15px 0;
+        }
+        .slider-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        .slider {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #ddd;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #AE6FD3;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #AE6FD3;
+            cursor: pointer;
+            border: none;
+        }
+        .preview-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .logo-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+        .logo-section h3 {
+            margin: 0 0 20px 0;
+            color: #333;
+            font-weight: 600;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 15px 0;
+            background: white;
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #AE6FD3 0%, #9a5bbf 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(174, 111, 211, 0.4);
+        }
+        .size-info {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .width-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+        
+        .width-control label {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .width-control input {
+            width: 80px;
+            padding: 6px 8px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .width-control input:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+        
+        .width-control span {
+            color: #666;
+            font-size: 14px;
+        }
+        .live-preview {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .live-preview h4 {
+            margin: 0 0 15px 0;
+            color: #333;
+        }
+        .logo-with-text-preview {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+        .custom-color-input {
+            margin-top: 15px;
+        }
+        .custom-color-input input[type="color"] {
+            width: 50px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Customizable Logo Generator</h1>
+            <p>Create high-resolution logos with custom colors, gradients, and fonts</p>
+        </div>
+        
+        <div class="controls">
+            <div class="control-group">
+                <h3>🎨 Color & Style Options</h3>
+                <div class="color-options">
+                    <div class="color-option active" data-color="#AE6FD3" style="background: #AE6FD3;">
+                        Original Purple
+                    </div>
+                    <div class="color-option" data-color="#8B5FD3" style="background: #8B5FD3;">
+                        Deep Purple
+                    </div>
+                    <div class="color-option" data-color="#C77DFF" style="background: #C77DFF;">
+                        Light Purple
+                    </div>
+                    <div class="color-option" data-color="#E0AAFF" style="background: #E0AAFF;">
+                        Lavender
+                    </div>
+                    <div class="color-option" data-color="#FF6B9D" style="background: #FF6B9D;">
+                        Pink
+                    </div>
+                    <div class="color-option" data-color="#FF8CC8" style="background: #FF8CC8;">
+                        Light Pink
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #AE6FD3 0%, #FF6B9D 100%)" style="background: linear-gradient(135deg, #AE6FD3 0%, #FF6B9D 100%);">
+                        Purple-Pink
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #8B5FD3 0%, #C77DFF 100%)" style="background: linear-gradient(135deg, #8B5FD3 0%, #C77DFF 100%);">
+                        Purple Fade
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #FF6B9D 0%, #FFB3E6 100%)" style="background: linear-gradient(135deg, #FF6B9D 0%, #FFB3E6 100%);">
+                        Pink Fade
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        Blue Purple
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        Pink Coral
+                    </div>
+                    <div class="color-option gradient-option" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                        Mint Pink
+                    </div>
+                </div>
+                
+                <div class="custom-color-input">
+                    <label for="customColor">Custom Color:</label>
+                    <input type="color" id="customColor" value="#AE6FD3">
+                </div>
+                
+                <div class="slider-group">
+                    <label for="logoSize">Logo Size: <span id="logoSizeValue">100%</span></label>
+                    <input type="range" id="logoSize" class="slider" min="50" max="150" value="100">
+                </div>
+                
+                <div class="slider-group">
+                    <label for="spacing">Logo-Text Spacing: <span id="spacingValue">15px</span></label>
+                    <input type="range" id="spacing" class="slider" min="5" max="50" value="15">
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        <input type="checkbox" id="sameInnerColor" style="margin-right: 8px;">
+                        Same color for inner circle
+                    </label>
+                </div>
+                
+                <div class="slider-group">
+                    <label>
+                        <input type="checkbox" id="useOutlineVersion" style="margin-right: 8px;">
+                        Use outline version (no fill)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <h3>📝 Font Options</h3>
+                <div class="font-options">
+                    <div class="font-option active" data-font="Quicksand" style="font-family: 'Quicksand', sans-serif;">
+                        Quicksand
+                    </div>
+                    <div class="font-option" data-font="Nunito" style="font-family: 'Nunito', sans-serif;">
+                        Nunito
+                    </div>
+                    <div class="font-option" data-font="Fredoka" style="font-family: 'Fredoka', sans-serif;">
+                        Fredoka
+                    </div>
+                    <div class="font-option" data-font="Varela Round" style="font-family: 'Varela Round', sans-serif;">
+                        Varela Round
+                    </div>
+                    <div class="font-option" data-font="Dosis" style="font-family: 'Dosis', sans-serif;">
+                        Dosis
+                    </div>
+                    <div class="font-option" data-font="Baloo 2" style="font-family: 'Baloo 2', sans-serif;">
+                        Baloo 2
+                    </div>
+                    <div class="font-option" data-font="Comfortaa" style="font-family: 'Comfortaa', sans-serif;">
+                        Comfortaa
+                    </div>
+                    <div class="font-option" data-font="Ubuntu" style="font-family: 'Ubuntu', sans-serif;">
+                        Ubuntu
+                    </div>
+                    <div class="font-option" data-font="Cabin" style="font-family: 'Cabin', sans-serif;">
+                        Cabin
+                    </div>
+                    <div class="font-option" data-font="Open Sans" style="font-family: 'Open Sans', sans-serif;">
+                        Open Sans
+                    </div>
+                    <div class="font-option" data-font="Source Sans 3" style="font-family: 'Source Sans 3', sans-serif;">
+                        Source Sans 3
+                    </div>
+                    <div class="font-option" data-font="PT Sans" style="font-family: 'PT Sans', sans-serif;">
+                        PT Sans
+                    </div>
+                    <div class="font-option" data-font="Work Sans" style="font-family: 'Work Sans', sans-serif;">
+                        Work Sans
+                    </div>
+                    <div class="font-option" data-font="Inter" style="font-family: 'Inter', sans-serif;">
+                        Inter
+                    </div>
+                    <div class="font-option" data-font="Poppins" style="font-family: 'Poppins', sans-serif;">
+                        Poppins
+                    </div>
+                    <div class="font-option" data-font="Lato" style="font-family: 'Lato', sans-serif;">
+                        Lato
+                    </div>
+                    <div class="font-option" data-font="Questrial" style="font-family: 'Questrial', sans-serif;">
+                        Questrial
+                    </div>
+                    <div class="font-option" data-font="Alexandria" style="font-family: 'Alexandria', sans-serif;">
+                        Alexandria
+                    </div>
+                    <div class="font-option" data-font="Bricolage Grotesque" style="font-family: 'Bricolage Grotesque', sans-serif;">
+                        Bricolage Grotesque
+                    </div>
+                    <div class="font-option" data-font="Chewy" style="font-family: 'Chewy', cursive;">
+                        Chewy
+                    </div>
+                    <div class="font-option" data-font="Luckiest Guy" style="font-family: 'Luckiest Guy', cursive;">
+                        Luckiest Guy
+                    </div>
+                    <div class="font-option" data-font="Righteous" style="font-family: 'Righteous', cursive;">
+                        Righteous
+                    </div>
+                    <div class="font-option" data-font="Bangers" style="font-family: 'Bangers', cursive;">
+                        Bangers
+                    </div>
+                    <div class="font-option" data-font="Creepster" style="font-family: 'Creepster', cursive;">
+                        Creepster
+                    </div>
+                    <div class="font-option" data-font="Nosifer" style="font-family: 'Nosifer', cursive;">
+                        Nosifer
+                    </div>
+                    <div class="font-option" data-font="Bungee" style="font-family: 'Bungee', cursive;">
+                        Bungee
+                    </div>
+                    <div class="font-option" data-font="Modak" style="font-family: 'Modak', cursive;">
+                        Modak
+                    </div>
+                    <div class="font-option" data-font="Rubik" style="font-family: 'Rubik', sans-serif;">
+                        Rubik
+                    </div>
+                    <div class="font-option" data-font="Pacifico" style="font-family: 'Pacifico', cursive;">
+                        Pacifico
+                    </div>
+                    <div class="font-option" data-font="Kalam" style="font-family: 'Kalam', cursive;">
+                        Kalam
+                    </div>
+                    <div class="font-option" data-font="Patrick Hand" style="font-family: 'Patrick Hand', cursive;">
+                        Patrick Hand
+                    </div>
+                    <div class="font-option" data-font="Leckerli One" style="font-family: 'Leckerli One', cursive;">
+                        Leckerli One
+                    </div>
+                    <div class="font-option" data-font="Borel" style="font-family: 'Borel', cursive;">
+                        Borel
+                    </div>
+                    <div class="font-option" data-font="Vibur" style="font-family: 'Vibur', cursive;">
+                        Vibur
+                    </div>
+                    <div class="font-option" data-font="Sofia" style="font-family: 'Sofia', cursive;">
+                        Sofia
+                    </div>
+                    <div class="font-option" data-font="Comic Neue" style="font-family: 'Comic Neue', cursive;">
+                        Comic Neue
+                    </div>
+                </div>
+                
+                <div class="slider-group">
+                    <label for="fontWeight">Font Weight: <span id="fontWeightValue">900</span></label>
+                    <input type="range" id="fontWeight" class="slider" min="300" max="900" value="900" step="100">
+                </div>
+                
+                <div class="slider-group">
+                    <label for="fontSize">Font Size: <span id="fontSizeValue">192px</span></label>
+                    <input type="range" id="fontSize" class="slider" min="120" max="300" value="192">
+                </div>
+            </div>
+        </div>
+        
+        <div class="live-preview">
+            <h4>Live Preview</h4>
+            <div class="logo-with-text-preview" id="livePreview">
+                <svg width="60" height="65" id="previewSvg" enable-background="new 0 0 1991.3 2143.2" viewBox="0 0 1991.3 2143.2" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="scale(1, -1) translate(0, -2143.2)">
+                        <path fill="#AE6FD3" d="m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3z M995.7 1635.1 C879.9 1489.2 804.8 1351.9 779 1236.1 c-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.8-100.8 251.1-216.7 399z m967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z"/>
+                        <path fill="#C592E2" d="M995.7 1635.1 C879.9 1489.2 804.8 1351.9 779 1236.1 c-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.8-100.8 251.1-216.7 399z" />
+                        <path fill="#AE6FD3" d="m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3zm-856-100.9c-115.8-145.9-190.9-283.2-216.7-399-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.7-100.8 251-216.7 399zm967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z" />
+                    </g>
+                </svg>
+                <span id="previewText" style="font-family: 'Quicksand', sans-serif; font-weight: 900; font-size: 36px; color: #AE6FD3;">Vendr</span>
+            </div>
+        </div>
+        
+        <div class="preview-section">
+            <div class="logo-section">
+                <h3>High-Resolution Logo Only</h3>
+                <canvas id="logoCanvas" width="2000" height="2000"></canvas>
+                <button class="download-btn" onclick="downloadLogo()">📥 Download Logo PNG</button>
+                <button class="download-btn" onclick="downloadSVG()">📥 Download Logo SVG</button>
+                <div class="size-info">2000×2000px - Perfect for social media, websites & print</div>
+            </div>
+            
+            <div class="logo-section">
+                <h3>Inverted Logo (White on Color)</h3>
+                <canvas id="invertedLogoCanvas" width="2000" height="2000"></canvas>
+                <button class="download-btn" onclick="downloadInvertedLogo()">📥 Download Inverted Logo PNG</button>
+                <div class="size-info">2000×2000px - White logo on colored background</div>
+            </div>
+            
+            <div class="logo-section">
+                <h3>High-Resolution Logo + Text</h3>
+                <div class="width-control">
+                    <label for="logoTextWidth">Canvas Width:</label>
+                    <input type="number" id="logoTextWidth" value="600" min="400" max="2000" step="50" onchange="updateLogoTextWidth()">
+                    <span>px</span>
+                </div>
+                <canvas id="logoTextCanvas" width="600" height="400"></canvas>
+                <button class="download-btn" onclick="downloadLogoWithText()">📥 Download Logo + Text PNG</button>
+                <div class="size-info" id="logoTextSizeInfo">600×400px - Ideal for headers, banners & business cards</div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // SVG path data with separate inner circle (filled version)
+        const svgMainPath = "m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3z M995.7 1635.1 C879.9 1489.2 804.8 1351.9 779 1236.1 c-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.8-100.8 251.1-216.7 399z m967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z";
+        const svgInnerPath = "M995.7 1635.1 C879.9 1489.2 804.8 1351.9 779 1236.1 c-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.8-100.8 251.1-216.7 399z";
+        
+        // SVG path data for outline version (no fill)
+        const svgOutlinePath = "m1851.6 1735.6c-15 111.6-90.1 208.1-195.2 251-51.5 21.4-107.3 27.9-163.1 21.4-53.6-6.4-107.3-23.6-163-55.7-77.2-43-154.5-109.4-244.6-208.1 141.6-173.8 227.4-332.5 259.6-474.1 15-66.5 17.2-126.6 10.7-182.4-8.6-53.6-27.9-103-57.9-145.9-66.5-96.5-178.1-152.3-302.5-152.3s-236 57.9-302.5 152.3c-30 42.9-49.3 92.3-57.9 145.9-8.6 55.8-6.4 118 10.7 182.4 32.2 141.6 120.1 302.5 259.6 476.2-88 98.7-167.3 165.2-244.6 208.1-55.8 32.2-109.4 49.4-163 55.8-55.3 6.2-111.2-1.2-163-21.4-105.1-42.9-180.2-139.5-195.2-251-6.4-53.6-2.1-107.2 19.3-167.3 6.4-21.5 17.2-42.9 27.9-68.6 15-34.3 32.2-70.8 49.3-107.3l2.2-4.3c148-319.7 306.8-645.8 472-963.3l6.4-12.9c17.2-32.1 34.3-66.5 51.5-98.7 17.2-34.3 36.5-66.5 60.1-94.4 45.1-51.5 105.1-79.4 171.6-79.4s126.6 27.9 171.6 79.4c23.6 27.9 42.9 60.1 60.1 94.4 17.2 32.2 34.3 66.5 51.5 98.6l6.5 12.9c163 319.6 321.8 645.7 469.8 965.4v2.1c17.2 34.3 32.2 73 49.3 107.3 10.7 25.8 21.5 47.2 27.9 68.6 17.1 55.9 23.5 109.5 14.9 165.3zm-856-100.9c-115.8-145.9-190.9-283.2-216.7-399-10.7-49.4-12.9-92.3-6.4-130.9 4.3-34.3 17.2-64.4 34.3-90.1 40.8-57.9 109.4-94.4 188.8-94.4s150.2 34.4 188.8 94.4c17.2 25.8 30 55.8 34.3 90.1 6.4 38.6 4.3 83.7-6.4 130.9-25.7 113.7-100.8 251-216.7 399zm967.6-111.5c-10.7-25.7-21.5-53.6-32.2-77.2-17.2-38.6-34.3-75.1-49.4-109.4l-2.1-2.1c-148-321.8-306.8-647.9-474.1-969.7l-6.4-12.9c-17.2-32.2-34.3-66.5-51.5-100.8-21.5-38.6-42.9-79.4-77.2-118-68.7-85.9-167.4-133.1-272.5-133.1-107.3 0-203.8 47.2-274.7 128.7-32.2 38.6-55.8 79.4-77.2 118-17.2 34.3-34.3 68.6-51.5 100.8l-6.4 12.8c-165.2 321.8-326.1 647.9-474.1 969.7l-2.1 4.3c-15 34.3-32.2 70.8-49.4 109.4-11.5 25.4-22.2 51.2-32.2 77.2-27.9 79.4-36.5 154.5-25.8 231.7 23.6 160.9 130.9 296.1 278.9 356.1 55.8 23.6 113.7 34.3 173.8 34.3 17.2 0 38.6-2.1 55.8-4.3 70.8-8.6 143.7-32.1 214.5-72.9 88-49.3 171.6-120.1 266-223.1 94.4 103 180.2 173.8 266 223.1 70.8 40.8 143.7 64.3 214.5 72.9 17.2 2.2 38.6 4.3 55.8 4.3 60.1 0 120.1-10.7 173.8-34.3 150.2-60.1 255.3-197.4 278.9-356.1 17.2-75 8.6-150-19.2-229.4z";
+
+        // Current settings
+        let currentColor = '#AE6FD3';
+        let currentGradient = null;
+        let currentFont = 'Quicksand';
+        let currentFontWeight = 900;
+        let currentFontSize = 192;
+        let currentLogoSize = 100;
+        let currentSpacing = 15;
+        let sameInnerColor = false;
+        let useOutlineVersion = false;
+
+        function createGradient(ctx, canvas, gradientString) {
+            if (!gradientString) return currentColor;
+            
+            // Parse gradient string to extract colors
+            const colorMatches = gradientString.match(/#[0-9A-Fa-f]{6}/g);
+            if (!colorMatches || colorMatches.length < 2) return currentColor;
+            
+            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+            gradient.addColorStop(0, colorMatches[0]);
+            gradient.addColorStop(1, colorMatches[1]);
+            return gradient;
+        }
+
+        function drawLogo(canvas, withText = false, isFavicon = false, isInverted = false) {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Enable high-quality rendering
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            
+            // Create a transparent background
+            ctx.globalCompositeOperation = 'source-over';
+            
+            // Set up the scaling and positioning
+            let scale, offsetX, offsetY;
+            const sizeMultiplier = currentLogoSize / 100;
+            
+            if (isFavicon) {
+                // For favicon - logo only, centered, optimized size
+                scale = 0.8 * sizeMultiplier;
+                offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
+                offsetY = canvas.height / 2;
+            } else if (withText) {
+                // For logo with text - calculate dynamic width
+                scale = 0.08 * sizeMultiplier;
+                offsetX = 40;
+                offsetY = canvas.height / 2;
+            } else {
+                // For logo only - scaled up 4x for high resolution
+                scale = 0.72 * sizeMultiplier;
+                offsetX = canvas.width / 2 - (1991.3 * scale) / 2;
+                offsetY = canvas.height / 2;
+            }
+            
+            // For inverted version, fill background with color first
+            if (isInverted) {
+                if (currentGradient) {
+                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                } else {
+                    ctx.fillStyle = currentColor;
+                }
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            ctx.save();
+            ctx.translate(offsetX, offsetY);
+            ctx.scale(scale, -scale); // Flip Y-axis to match SVG coordinate system
+            ctx.translate(0, -2143.2 / 2); // Center the logo vertically
+            
+            if (useOutlineVersion) {
+                // Draw outline version (single path with fill, no inner circle)
+                const outlinePath = new Path2D(svgOutlinePath);
+                if (isInverted) {
+                    ctx.fillStyle = '#FFFFFF'; // White for inverted
+                } else if (currentGradient) {
+                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                } else {
+                    ctx.fillStyle = currentColor;
+                }
+                ctx.fill(outlinePath);
+            } else {
+                // Draw filled version (original behavior)
+                const mainPath = new Path2D(svgMainPath);
+                if (isInverted) {
+                    ctx.fillStyle = '#FFFFFF'; // White for inverted
+                } else if (currentGradient) {
+                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                } else {
+                    ctx.fillStyle = currentColor;
+                }
+                ctx.fill(mainPath);
+                
+                // Draw the inner circle
+                const innerPath = new Path2D(svgInnerPath);
+                if (isInverted) {
+                    ctx.fillStyle = '#FFFFFF'; // White for inverted
+                } else if (sameInnerColor) {
+                    // Use the same color/gradient as the main path
+                    if (currentGradient) {
+                        ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                    } else {
+                        ctx.fillStyle = currentColor;
+                    }
+                } else {
+                    // Use a lighter shade (original behavior)
+                    if (currentGradient) {
+                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                        if (colorMatches && colorMatches.length > 0) {
+                            ctx.fillStyle = lightenColor(colorMatches[0], 20);
+                        } else {
+                            ctx.fillStyle = '#C592E2';
+                        }
+                    } else {
+                        ctx.fillStyle = lightenColor(currentColor, 20);
+                    }
+                }
+                ctx.fill(innerPath);
+            }
+            
+            ctx.restore();
+            
+            // Add text if requested (not for favicon)
+            if (withText && !isFavicon) {
+                ctx.font = `${currentFontWeight} ${currentFontSize}px ${currentFont}, sans-serif`;
+                
+                if (currentGradient) {
+                    ctx.fillStyle = createGradient(ctx, canvas, currentGradient);
+                } else {
+                    ctx.fillStyle = currentColor;
+                }
+                ctx.textAlign = 'left';
+                ctx.textBaseline = 'middle';
+                
+                // Position text next to logo (scaled spacing)
+                const textX = offsetX + (1991.3 * scale) + (currentSpacing * 2);
+                const textY = canvas.height / 2 + 8; // Move text slightly lower
+                ctx.fillText('Vendr', textX, textY);
+            }
+        }
+
+        function lightenColor(color, percent) {
+            // Convert hex to RGB
+            const hex = color.replace('#', '');
+            const r = parseInt(hex.substr(0, 2), 16);
+            const g = parseInt(hex.substr(2, 2), 16);
+            const b = parseInt(hex.substr(4, 2), 16);
+            
+            // Lighten each component
+            const newR = Math.min(255, Math.floor(r + (255 - r) * (percent / 100)));
+            const newG = Math.min(255, Math.floor(g + (255 - g) * (percent / 100)));
+            const newB = Math.min(255, Math.floor(b + (255 - b) * (percent / 100)));
+            
+            // Convert back to hex
+            return `#${newR.toString(16).padStart(2, '0')}${newG.toString(16).padStart(2, '0')}${newB.toString(16).padStart(2, '0')}`;
+        }
+
+        function updatePreview() {
+            const previewSvg = document.getElementById('previewSvg');
+            const previewText = document.getElementById('previewText');
+            
+            // Update SVG color
+            const pathElements = previewSvg.querySelectorAll('path');
+            const mainPath = pathElements[0];
+            const innerPath = pathElements[1];
+            const outlinePath = pathElements[2];
+            
+            if (useOutlineVersion) {
+                // Hide filled paths and show outline
+                mainPath.style.display = 'none';
+                innerPath.style.display = 'none';
+                outlinePath.style.display = 'block';
+                
+                // Update outline color (now using fill)
+                if (currentGradient) {
+                    const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                    const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                    outlinePath.setAttribute('fill', mainColor);
+                } else {
+                    outlinePath.setAttribute('fill', currentColor);
+                }
+            } else {
+                // Show filled paths and hide outline
+                mainPath.style.display = 'block';
+                innerPath.style.display = 'block';
+                outlinePath.style.display = 'none';
+                
+                if (sameInnerColor) {
+                    // Use the same color for both paths
+                    if (currentGradient) {
+                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                        const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                        mainPath.setAttribute('fill', mainColor);
+                        innerPath.setAttribute('fill', mainColor);
+                    } else {
+                        mainPath.setAttribute('fill', currentColor);
+                        innerPath.setAttribute('fill', currentColor);
+                    }
+                } else {
+                    // Use lighter shade for inner circle (original behavior)
+                    if (currentGradient) {
+                        const colorMatches = currentGradient.match(/#[0-9A-Fa-f]{6}/g);
+                        const mainColor = colorMatches ? colorMatches[0] : currentColor;
+                        mainPath.setAttribute('fill', mainColor);
+                        innerPath.setAttribute('fill', lightenColor(mainColor, 20));
+                    } else {
+                        mainPath.setAttribute('fill', currentColor);
+                        innerPath.setAttribute('fill', lightenColor(currentColor, 20));
+                    }
+                }
+            }
+            
+            // Update text style
+            previewText.style.fontFamily = `'${currentFont}', sans-serif`;
+            previewText.style.fontWeight = currentFontWeight;
+            if (currentGradient) {
+                previewText.style.background = currentGradient;
+                previewText.style.webkitBackgroundClip = 'text';
+                previewText.style.backgroundClip = 'text';
+                previewText.style.webkitTextFillColor = 'transparent';
+                previewText.style.color = 'transparent';
+            } else {
+                previewText.style.background = 'none';
+                previewText.style.webkitBackgroundClip = 'initial';
+                previewText.style.backgroundClip = 'initial';
+                previewText.style.webkitTextFillColor = 'initial';
+                previewText.style.color = currentColor;
+            }
+            
+            // Update spacing
+            const livePreview = document.getElementById('livePreview');
+            livePreview.style.gap = currentSpacing + 'px';
+            
+            // Update logo size
+            const logoSize = 60 * (currentLogoSize / 100);
+            const logoHeight = 65 * (currentLogoSize / 100);
+            previewSvg.setAttribute('width', logoSize);
+            previewSvg.setAttribute('height', logoHeight);
+            
+            // Update canvas renderings
+            const logoCanvas = document.getElementById('logoCanvas');
+            const invertedLogoCanvas = document.getElementById('invertedLogoCanvas');
+            const logoTextCanvas = document.getElementById('logoTextCanvas');
+            
+            drawLogo(logoCanvas, false);
+            drawLogo(invertedLogoCanvas, false, false, true);
+            drawLogo(logoTextCanvas, true);
+        }
+
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        function downloadLogo() {
+            const canvas = document.getElementById('logoCanvas');
+            const timestamp = new Date().toISOString().slice(0,10);
+            downloadCanvas(canvas, `vendr-logo-${timestamp}.png`);
+        }
+
+        function updateLogoTextWidth() {
+            const widthInput = document.getElementById('logoTextWidth');
+            const canvas = document.getElementById('logoTextCanvas');
+            const sizeInfo = document.getElementById('logoTextSizeInfo');
+            
+            const newWidth = parseInt(widthInput.value);
+            canvas.width = newWidth;
+            
+            // Update size info
+            sizeInfo.textContent = `${newWidth}×400px - Ideal for headers, banners & business cards`;
+            
+            // Redraw the logo
+            updatePreview();
+        }
+        
+        function downloadLogoWithText() {
+            const canvas = document.getElementById('logoTextCanvas');
+            const timestamp = new Date().toISOString().slice(0,10);
+            downloadCanvas(canvas, `vendr-logo-with-text-${timestamp}.png`);
+        }
+
+
+        function downloadSVG() {
+            const timestamp = new Date().toISOString().slice(0,10);
+            
+            // Create SVG content
+            let svgContent = `<svg width="2000" height="2000" viewBox="0 0 1991.3 2143.2" xmlns="http://www.w3.org/2000/svg">
+                <g transform="scale(1, -1) translate(0, -2143.2)">`;
+            
+            if (useOutlineVersion) {
+                // Use outline version
+                const fillColor = currentGradient ? 
+                    (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
+                    currentColor;
+                svgContent += `<path fill="${fillColor}" d="${svgOutlinePath}" />`;
+            } else {
+                // Use filled version
+                const mainColor = currentGradient ? 
+                    (currentGradient.match(/#[0-9A-Fa-f]{6}/g) ? currentGradient.match(/#[0-9A-Fa-f]{6}/g)[0] : currentColor) : 
+                    currentColor;
+                const innerColor = sameInnerColor ? mainColor : lightenColor(mainColor, 20);
+                
+                svgContent += `<path fill="${mainColor}" d="${svgMainPath}" />`;
+                svgContent += `<path fill="${innerColor}" d="${svgInnerPath}" />`;
+            }
+            
+            svgContent += `</g></svg>`;
+            
+            // Create and download SVG file
+            const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `vendr-logo-${timestamp}.svg`;
+            link.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function downloadInvertedLogo() {
+            const canvas = document.getElementById('invertedLogoCanvas');
+            const timestamp = new Date().toISOString().slice(0,10);
+            downloadCanvas(canvas, `vendr-logo-inverted-${timestamp}.png`);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Color option handlers
+            document.querySelectorAll('.color-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    if (this.dataset.gradient) {
+                        currentGradient = this.dataset.gradient;
+                        currentColor = null;
+                    } else {
+                        currentColor = this.dataset.color;
+                        currentGradient = null;
+                    }
+                    updatePreview();
+                });
+            });
+
+            // Custom color picker
+            document.getElementById('customColor').addEventListener('change', function() {
+                document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('active'));
+                currentColor = this.value;
+                currentGradient = null;
+                updatePreview();
+            });
+
+            // Font option handlers
+            document.querySelectorAll('.font-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    document.querySelectorAll('.font-option').forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFont = this.dataset.font;
+                    updatePreview();
+                });
+            });
+
+            // Slider handlers
+            const logoSizeSlider = document.getElementById('logoSize');
+            const logoSizeValue = document.getElementById('logoSizeValue');
+            logoSizeSlider.addEventListener('input', function() {
+                currentLogoSize = parseInt(this.value);
+                logoSizeValue.textContent = currentLogoSize + '%';
+                updatePreview();
+            });
+
+            const spacingSlider = document.getElementById('spacing');
+            const spacingValue = document.getElementById('spacingValue');
+            spacingSlider.addEventListener('input', function() {
+                currentSpacing = parseInt(this.value);
+                spacingValue.textContent = currentSpacing + 'px';
+                updatePreview();
+            });
+
+            const fontWeightSlider = document.getElementById('fontWeight');
+            const fontWeightValue = document.getElementById('fontWeightValue');
+            fontWeightSlider.addEventListener('input', function() {
+                currentFontWeight = parseInt(this.value);
+                fontWeightValue.textContent = currentFontWeight;
+                updatePreview();
+            });
+
+            const fontSizeSlider = document.getElementById('fontSize');
+            const fontSizeValue = document.getElementById('fontSizeValue');
+            fontSizeSlider.addEventListener('input', function() {
+                currentFontSize = parseInt(this.value);
+                fontSizeValue.textContent = currentFontSize + 'px';
+                updatePreview();
+            });
+
+            // Same inner color checkbox
+            document.getElementById('sameInnerColor').addEventListener('change', function() {
+                sameInnerColor = this.checked;
+                updatePreview();
+            });
+
+            // Use outline version checkbox
+            document.getElementById('useOutlineVersion').addEventListener('change', function() {
+                useOutlineVersion = this.checked;
+                updatePreview();
+            });
+
+            // Wait for fonts to load then initialize
+            document.fonts.ready.then(() => {
+                updatePreview();
+            });
+        });
+    </script>
+</body>
+</html>
